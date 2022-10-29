@@ -35,3 +35,27 @@ def InsertionSort(seq:List) -> List:
             j -= 1
         seq[j+1] = curr
     return seq
+
+#  Merge Sort 归并排序 Every situation O(nlogn) 稳定
+def MergeSort(seq:List) -> List:
+    if len(seq) < 2: return seq
+    left = MergeSort(seq[:len(seq)//2])
+    right = MergeSort(seq[len(seq)//2:])
+    return Merge(left,right)
+
+def Merge(left:List,right:List) -> List:
+    res,i,j = [],0,0
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            res.append(left[i])
+            i+=1
+        else:
+            res.append(right[j])
+            j+=1
+    res.extend(left[i:])
+    res.extend(right[j:])
+    return res
+
+# Quick sort 快速排序
+def QuickSort(seq:List) -> List:
+    pass
